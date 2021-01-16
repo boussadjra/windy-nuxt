@@ -1,5 +1,7 @@
 # windy-nuxt
 
+A starter template based on on Nuxt.js and Tailwind
+
 ## Build Setup
 
 ```bash
