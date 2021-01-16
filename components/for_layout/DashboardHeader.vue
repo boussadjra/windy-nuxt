@@ -1,0 +1,100 @@
+<template>
+<div class="w-full h-full flex items-center justify-between px-4">
+    <div>
+        <w-btn circle bgColor="bg-gray-100 dark:bg-gray-600" bgColorHover="hover:bg-gray-200" textColor="text-gray-700 dark:text-gray-200" v-on:click.native="setCollapsed()">
+            <a href="#">
+                <IconQueryQueue :height="24" :width="24" :style="collapseBtnStyle" class="transition-transform duration-300" />
+            </a>
+        </w-btn>
+    </div>
+    <div class="flex space-x-3 items-center justify-between">
+        <div>
+            <w-btn circle @click.native="setRTL" bgColor="bg-gray-transparent" bgColorHover="hover:bg-gray-200" textColor="text-gray-500" v-on:click="setCollapsed()">
+
+                <component :is="rtl?'IconTextAlignLeft':'IconTextAlignRight'" class="text-purple-700 dark:text-purple-400" :height="24" :width="24" @click.native="isLight = !isLight" />
+
+            </w-btn>
+        </div>
+        <a href="#">
+            <component :is="isLight?'icon-moon':'icon-sun'" class="text-purple-700 dark:text-purple-400" :height="24" :width="24" @click.native="isLight = !isLight" />
+        </a>
+    </div>
+</div>
+</template>
+
+<script>
+import Button from "../actions/Button.vue";
+import IconSun from "../icons/IconSun";
+import IconMoon from "../icons/IconMoon";
+import IconQueryQueue from "../icons/IconQueryQueue";
+import IconTextAlignLeft from "../icons/IconTextAlignLeft";
+import IconTextAlignRight from "../icons/IconTextAlignRight";
+export default {
+    props: {
+        sidebarCollapsed: {
+            type: Boolean,
+            default: false,
+        },
+        rtl: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    data() {
+        return {
+            isLight: true,
+        };
+    },
+    watch: {
+        isLight() {
+            this.switchMode();
+        },
+    },
+    computed: {
+        collapseBtnStyle() {
+            return {
+                transform: this.sidebarCollapsed ? "scale(1)" : "scale(-1,1)",
+            };
+        },
+    },
+    components: {
+        "w-btn": Button,
+        IconSun,
+        IconMoon,
+        IconQueryQueue,
+        IconTextAlignLeft,
+        IconTextAlignRight,
+    },
+    methods: {
+        setCollapsed() {
+            this.$emit("collapse-sidebar");
+        },
+        setRTL() {
+            this.$emit("toggle-rtl");
+        },
+        switchMode() {
+            console.log('-------change mode-------------')
+            console.log()
+            console.log('--------------------')
+            let htmlElem = document.querySelector("html");
+            htmlElem.classList[this.isLight ? "remove" : "add"]("dark");
+            localStorage.setItem('vwmode-islight', this.isLight)
+        },
+    },
+    mounted() {
+        this.isLight = JSON.parse(localStorage.getItem('vwmode-islight'))
+    }
+};
+</script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
