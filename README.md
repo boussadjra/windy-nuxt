@@ -2,6 +2,10 @@
 
 A starter template based on on Nuxt.js and Tailwind
 
+## Preview
+
+**[PREVIEW](https://windy-nuxt.netlify.app/)**
+
 ## Build Setup
 
 ```bash
