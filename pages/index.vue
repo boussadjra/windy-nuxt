@@ -6,9 +6,11 @@
     <div class="flex flex-col-reverse justify-around w-full lg:h-96 lg:flex-row">
         <div class="flex flex-col h-32 items-center p-16">
             <h1 class="text-7xl p-8 font-bold text-gray-800">WINDYNUXT</h1>
-            <w-btn size="lg">
-                <nuxt-link to="/admin"> GET STARTED </nuxt-link>
-            </w-btn>
+            <nuxt-link to="/admin">
+                <w-btn size="lg">
+                    GET STARTED
+                </w-btn>
+            </nuxt-link>
         </div>
     </div>
 </main>
