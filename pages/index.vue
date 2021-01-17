@@ -1,24 +1,26 @@
 <template>
-<div class="container">
-    <div>
-        <Logo />
-        <h1 class="title">
-            windy-nuxt
-        </h1>
-        <div class="links">
-            <a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer" class="button--green">
-                Documentation
-            </a>
-            <a href="https://github.com/nuxt/nuxt.js" target="_blank" rel="noopener noreferrer" class="bg-purple-700 text-white">
-                GitHub
-            </a>
+<main>
+    <svg viewBox="0 0 1440 160" class="fill-current text-purple-800">
+        <path fill-opacity="1" d="M0,32L48,32C96,32,192,32,288,53.3C384,75,480,117,576,128C672,139,768,117,864,90.7C960,64,1056,32,1152,32C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+    <div class="flex flex-col-reverse justify-around w-full lg:h-96 lg:flex-row">
+        <div class="flex flex-col h-32 items-center p-16">
+            <h1 class="text-7xl p-8 font-bold text-gray-800">WINDYNUXT</h1>
+            <w-btn size="lg">
+                <nuxt-link to="/admin"> GET STARTED </nuxt-link>
+            </w-btn>
         </div>
     </div>
-</div>
+</main>
 </template>
 
 <script>
-export default {}
+import Button from "~/components/actions/Button.vue";
+export default {
+    components: {
+        "w-btn": Button,
+    },
+};
 </script>
 
 <style>
@@ -37,16 +39,8 @@ export default {}
 }
 
 .title {
-    font-family:
-        'Quicksand',
-        'Source Sans Pro',
-        -apple-system,
-        BlinkMacSystemFont,
-        'Segoe UI',
-        Roboto,
-        'Helvetica Neue',
-        Arial,
-        sans-serif;
+    font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     display: block;
     font-weight: 300;
     font-size: 100px;
