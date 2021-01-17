@@ -8,6 +8,7 @@ module.exports ={
     }
   },
   variants: {},
+  darkMode: 'class',
   plugins: [],
   purge: {
     enabled: process.env.NODE_ENV === 'production',
